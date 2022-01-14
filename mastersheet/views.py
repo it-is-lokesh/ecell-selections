@@ -32,11 +32,11 @@ def schedule(request):
             selected = []
 
             for i in range(len(w)):
-                if w[i]['taken'] == '' and w[i]['slot'] != '':
+                if w[i]['taken'] == '' and w[i]['slot'] != 'FALSE':
                     remaining.append(w[i])
                 if w[i]['taken'] == 'True':
                     completed.append(w[i])
-                if w[i]['slot'] == '':
+                if w[i]['slot'] == 'FALSE':
                     notReg.append(w[i])
                 if w[i]['selected'] == 'Yes':
                     selected.append(w[i])
