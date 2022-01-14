@@ -3,6 +3,13 @@ from django.http import HttpResponse
 from mastersheet.models import Round2database
 from slot.models import database
 from django.conf import settings
+
+import pygsheets
+import pandas as pd
+
+
+gc = pygsheets.authorize(service_file='slot/creds.json')
+
 # Create your views here.
 
 
@@ -15,10 +22,24 @@ def schedule(request):
         username = request.POST.get('interviewer')
         password = request.POST.get('password')
         if password == settings.PASSWORD:
-            remaining = Round2database.objects.filter(taken='False').exclude(slot='False')
-            completed = Round2database.objects.filter(taken='True')
-            notReg = Round2database.objects.filter(slot='False')
-            selected = Round2database.objects.filter(selected='Yes')
+            sh = gc.open('PI R1 Mastersheet')
+            wks = sh[0]
+            w = wks.get_all_records()
+
+            remaining = []
+            completed = []
+            notReg = []
+            selected = []
+
+            for i in range(len(w)):
+                if w[i]['taken'] == '' and w[i]['slot'] != '':
+                    remaining.append(w[i])
+                if w[i]['taken'] == 'True':
+                    completed.append(w[i])
+                if w[i]['slot'] == '':
+                    notReg.append(w[i])
+                if w[i]['selected'] == 'Yes':
+                    selected.append(w[i])
             context = {'remaining': remaining, 'completed': completed,
                     'error': False, 'interviewer': username, 'notReg': notReg, 'selected': selected}
             return render(request, 'schedule.html', context)
@@ -26,6 +47,9 @@ def schedule(request):
             context = {'error': True}
             return render(request, 'adminLogin.html', context)
     elif request.method == 'GET':
+        sh = gc.open('PI R1 Mastersheet')
+        wks = sh[0]
+        w = wks.get_all_records()
         interviewer = request.GET.get('interviewer')
         taken = request.GET.get('taken')
         remarks = request.GET.get('remarks')
@@ -34,11 +58,32 @@ def schedule(request):
             selected = 'No'
         else:
             selected = 'Yes'
-        Round2database.objects.filter(roll=taken).update(taken='True', selected=selected, remarks=remarks, interviewer=interviewer)
-        remaining = Round2database.objects.filter(taken='False').exclude(slot='False')
-        completed = Round2database.objects.filter(taken='True')
-        notReg = Round2database.objects.filter(slot='False')
-        selected = Round2database.objects.filter(selected='Yes')
+
+        for i in range(len(w)):
+            if w[i]['roll'] == taken:
+                locationInterviewer = 'G' + str(i+2)
+                locationRemarks = 'H' + str(i+2)
+                locationTaken = 'I' + str(i+2)
+                locationSelected = 'J' + str(i+2)
+                wks.update_value(locationInterviewer, interviewer)
+                wks.update_value(locationRemarks, remarks)
+                wks.update_value(locationTaken, 'TRUE')
+                wks.update_value(locationSelected, 'Yes')
+                    
+        remaining = []
+        completed = []
+        notReg = []
+        selected = []
+
+        for i in range(len(w)):
+            if w[i]['taken'] == '' and w[i]['slot'] != '':
+                remaining.append(w[i])
+            if w[i]['taken'] == 'True':
+                completed.append(w[i])
+            if w[i]['slot'] == '':
+                notReg.append(w[i])
+            if w[i]['selected'] == 'Yes':
+                selected.append(w[i])
         context = {'remaining': remaining, 'completed': completed,
                     'error': False, 'interviewer': interviewer, 'notReg': notReg, 'selected': selected}
         return render(request, 'schedule.html', context)
