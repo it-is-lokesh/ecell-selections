@@ -102,7 +102,7 @@ def bookSlot(request):
                     'ECell Round 3 Selections | Meeting Link',
                     body,
                     settings.EMAIL_HOST_USER,
-                    [entry['email'], 'sailokesh.gorantla@ecell-iitkgp.org'],
+                    [entry['email'], 'sailokesh.gorantla@ecell-iitkgp.org', 'shubham.chaurasiya@ecell-iitkgp.org', 'vaibhav.mohite@ecell-iitkgp.org'],
                 )
                 email.fail_silently = False
                 email.send()
@@ -116,7 +116,7 @@ def bookSlot(request):
                     'ECell Round 3 Selections | Meeting Rescheduled',
                     body,
                     settings.EMAIL_HOST_USER,
-                    [entry['email'], 'sailokesh.gorantla@ecell-iitkgp.org'],
+                    [entry['email'], 'sailokesh.gorantla@ecell-iitkgp.org', 'shubham.chaurasiya@ecell-iitkgp.org', 'vaibhav.mohite@ecell-iitkgp.org'],
                 )
                 email.fail_silently = False
                 email.send()
