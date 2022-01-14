@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block active_schedule %}active{% endblock %}
+{% block scheduleBlock %}
+<li class="nav-item">
+	<a class="nav-link active">Mastersheet</a>
+</li>
+{% endblock %}
+{% block scheduleSubmit %}
+<form class="d-flex" method="GET" id="mastersheet" style="right: 20px; position: absolute">
+	<input class="form-control me-2" type="text" placeholder="Remarks" aria-label="Search" name="remarks">
+	<input name='interviewer' style='display: none' value={{interviewer}}>
+	<button class="btn btn-outline-success" type="submit">Save</button>
+  </form>
+{% endblock %}
+{% block body %}
+<style>
+	table th, td, tr, thead, tbody{
+		color: white;
+	}
+</style>
+
+<h4 class="my-3 mx-3">Hello {{interviewer}}!</h4>
+
+<h2 class="container my-3">Remaining Interviews</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Contact No.</th>
+        	<th scope="col">Slot</th>
+			<th scope="col">Task Link</th>
+        	<th scope="col">Interview Taken</th>
+			<th scope="col">Selected</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in remaining %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td>{{dataset.number}}</td>
+        	<td>{{dataset.slot}}</td>
+			<td><a href={{dataset.file}} style="color: white" target="_blank">Click Here</a></td>
+			<td><input type="checkbox" class="form-check-input" id="taken" name='taken' value={{dataset.roll}} form="mastersheet"></td>
+			<td><input type="checkbox" class="form-check-input" id="selected" name='selected' value={{dataset.roll}} form="mastersheet"></td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+<br><br>
+<h2 class="container my-3">Completed Interviews</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Task Link</th>
+			<th scope="col">Remarks</th>
+        	<th scope="col">Interviewer</th>
+			<th scope="col">Selected</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in completed %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td><a href={{dataset.file}} style="color: white" target="_blank">Click Here</a></td>
+			<td>{{dataset.remarks}}</td>
+			<td>{{dataset.interviewer}}</td>
+			<td>{{dataset.selected}}</td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+<br><br> 
+<h2 class="container my-3">Selected Candidates</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Contact No.</th>
+			<th scope="col">Task Link</th>
+			<th scope="col">Remarks</th>
+        	<th scope="col">Interviewer</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in selected %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td>{{dataset.number}}</td>
+			<td><a href={{dataset.file}} style="color: white" target="_blank">Click Here</a></td>
+			<td>{{dataset.remarks}}</td>
+			<td>{{dataset.interviewer}}</td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+<br><br>
+<h2 class="container my-3">Not yet Registered</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Contact No.</th>
+			<th scope="col">Email</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in notReg %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td>{{dataset.number}}</td>
+        	<td>{{dataset.email}}</td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

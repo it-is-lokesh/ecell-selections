@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block active_schedule %}active{% endblock %}
+{% block scheduleBlock %}
+<li class="nav-item">
+	<a class="nav-link active">Mastersheet</a>
+</li>
+{% endblock %}
+{% block scheduleSubmit %}
+<form class="d-flex" method="GET" id="mastersheet">
+	<input name='interviewer' style='display: none' value={{interviewer}}>
+	<button class="btn btn-outline-success" type="submit">Submit</button>
+</form>
+{% endblock %}
+{% block body %}
+<style>
+	table th, td, tr, thead, tbody{
+		color: white;
+	}
+</style>
+
+<h4 class="my-3 mx-3">Hello {{interviewer}}!</h4>
+<h2 class="container my-3">Not yet Registered</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in notReg %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

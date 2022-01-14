@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block active_home %}active{% endblock %}
+
+{% block body %}
+
+{% if success %}
+<div class="alert alert-success" role="alert">
+	Your slot is booked successfully. The meeting link will be sent through mail shortly.
+</div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+	Please enter a valid roll number.
+</div>
+{% endif %}
+
+{% if slot1d1 %}
+<style>
+	#labelSlot1d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot2d1 %}
+<style>
+	#labelSlot2d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot3d1 %}
+<style>
+	#labelSlot3d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot4d1 %}
+<style>
+	#labelSlot4d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot5d1 %}
+<style>
+	#labelSlot5d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot6d1 %}
+<style>
+	#labelSlot6d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot7d1 %}
+<style>
+	#labelSlot7d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot8d1 %}
+<style>
+	#labelSlot8d1 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot1d2 %}
+<style>
+	#labelSlot1d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot2d2 %}
+<style>
+	#labelSlot2d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot3d2 %}
+<style>
+	#labelSlot3d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot4d2 %}
+<style>
+	#labelSlot4d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot5d2 %}
+<style>
+	#labelSlot5d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot6d2 %}
+<style>
+	#labelSlot6d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot7d2 %}
+<style>
+	#labelSlot7d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+{% if slot8d2 %}
+<style>
+	#labelSlot8d2 {
+		display: none;
+	}
+</style>
+{% endif %}
+
+<h1 style="text-align: center; margin-top: 50px">Slot Booking for ECell Web Team selections Round 3</h1>
+
+<div class='container'>
+	<br>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<!-- <input type="text" placeholder="Enter your roll no." name="roll"/> -->
+		<div class="mb-3">
+			<input type="text" class="form-control" id="roll" placeholder="Enter your Roll No." name="roll" required>
+		</div>
+		<br>
+		<div class="mb-3">
+			<label for="file" class="form-label">Link for your task files</label>
+			<input class="form-control" type="url" id="file" name="file" required placeholder="Paste google drive/github Link here">
+		</div>
+		<br>
+		<h3>Available Slots | Day 1 | 17/1/2022</h3>
+		<label id="labelSlot1d1" for="slot1d1">
+			<input type="radio" name="slot" required id="slot1d1" value="17/1/2022 at 6:00 PM" />
+			<span>6:00 PM</span>
+		</label>
+
+		<label id="labelSlot2d1" for="slot2d1">
+			<input type="radio" name="slot" required id="slot2d1" value="17/1/2022 at 6:30 PM" />
+			<span>6:30 PM</span>
+		</label>
+
+		<label id="labelSlot3d1" for="slot3d1">
+			<input type="radio" name="slot" required id="slot3d1" value="17/1/2022 at 7:00 PM" />
+			<span>7:00 PM</span>
+		</label>
+
+		<label id="labelSlot4d1" for="slot4d1">
+			<input type="radio" name="slot" required id="slot4d1" value="17/1/2022 at 7:30 PM" />
+			<span>7:30 PM</span>
+		</label>
+
+		<label id="labelSlot5d1" for="slot5d1">
+			<input type="radio" name="slot" required id="slot5d1" value="17/1/2022 at 8:30 PM" />
+			<span>8:30 PM</span>
+		</label>
+
+		<label id="labelSlot6d1" for="slot6d1">
+			<input type="radio" name="slot" required id="slot6d1" value="17/1/2022 at 9:00 PM" />
+			<span>9:00 PM</span>
+		</label>
+
+		<label id="labelSlot7d1" for="slot7d1">
+			<input type="radio" name="slot" required id="slot7d1" value="17/1/2022 at 9:30 PM" />
+			<span>9:30 PM</span>
+		</label>
+		<label id="labelSlot8d1" for="slot8d1">
+			<input type="radio" name="slot" required id="slot8d1" value="17/1/2022 at 10:00 PM" />
+			<span>10:00 PM</span>
+		</label>
+		<br><br>
+		<h3>Available Slots | Day 2 | 18/1/2022</h3>
+		<label id="labelSlot1d2" for="slot1d2">
+			<input type="radio" name="slot" required id="slot1d2" value="18/1/2022 at 6:00 PM" />
+			<span>6:00 PM</span>
+		</label>
+
+		<label id="labelSlot2d2" for="slot2d2">
+			<input type="radio" name="slot" required id="slot2d2" value="18/1/2022 at 6:30 PM" />
+			<span>6:30 PM</span>
+		</label>
+
+		<label id="labelSlot3d2" for="slot3d2">
+			<input type="radio" name="slot" required id="slot3d2" value="18/1/2022 at 7:00 PM" />
+			<span>7:00 PM</span>
+		</label>
+
+		<label id="labelSlot4d2" for="slot4d2">
+			<input type="radio" name="slot" required id="slot4d2" value="18/1/2022 at 7:30 PM" />
+			<span>7:30 PM</span>
+		</label>
+
+		<label id="labelSlot5d2" for="slot5d2">
+			<input type="radio" name="slot" required id="slot5d2" value="18/1/2022 at 8:30 PM" />
+			<span>8:30 PM</span>
+		</label>
+
+		<label id="labelSlot6d2" for="slot6d2">
+			<input type="radio" name="slot" required id="slot6d2" value="18/1/2022 at 9:00 PM" />
+			<span>9:00 PM</span>
+		</label>
+
+		<label id="labelSlot7d2" for="slot7d2">
+			<input type="radio" name="slot" required id="slot7d2" value="18/1/2022 at 9:30 PM" />
+			<span>9:30 PM</span>
+		</label>
+		<label id="labelSlot8d2" for="slot8d2">
+			<input type="radio" name="slot" required id="slot8d2" value="18/1/2022 at 10:00 PM" />
+			<span>10:00 PM</span>
+		</label>
+		<br><br>
+		<input type="submit" class="btn-success btn">
+	</form>
+</div>
+{%endblock%}
