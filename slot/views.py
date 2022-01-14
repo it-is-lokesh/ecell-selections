@@ -1,10 +1,10 @@
-# from django.shortcuts import render
-# from slot.models import database
-# from mastersheet.models import Round2database
-# from django.core.mail import EmailMessage
-# from slot.forms import slotForm
-# from django.conf import settings
-# from django.template.loader import render_to_string
+from django.shortcuts import render
+from slot.models import database
+from mastersheet.models import Round2database
+from django.core.mail import EmailMessage
+from slot.forms import slotForm
+from django.conf import settings
+from django.template.loader import render_to_string
 # import pandas as pd
 # import gspread
 # from oauth2client.service_account import ServiceAccountCredentials
