@@ -83,6 +83,7 @@ def bookSlot(request):
             if(w[i]['roll'] == roll):
                 entry = w[i]
                 flag = entry['slot']
+                print(flag)
                 locationSlot = 'E' + str(i+2)
                 locationFile = 'F' + str(i+2)
                 # print(bookingsSlot1d1, entry['email'])
@@ -93,7 +94,7 @@ def bookSlot(request):
                 break        
         
         if len(entry) == 10:
-            if flag != '':
+            if flag != 'FALSE':
                 success = True
                 body = render_to_string(
                     'email.html', {'name': entry['name'], 'dateTime': slot, 'file': file})
