@@ -113,7 +113,7 @@ def bookSlot(request):
                 body = render_to_string(
                     'email.html', {'name': entry['name'], 'dateTime': slot, 'file': file})
                 email = EmailMessage(
-                    'ECell Round 3 Selections | Meeting Rescheduled',
+                    'ECell Round 3 Selections | Meeting Link',
                     body,
                     settings.EMAIL_HOST_USER,
                     [entry['email'], 'sailokesh.gorantla@ecell-iitkgp.org', 'shubham.chaurasiya@ecell-iitkgp.org', 'vaibhav.mohite@ecell-iitkgp.org'],
