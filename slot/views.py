@@ -43,36 +43,36 @@ def bookSlot(request):
         if(w[i]['slot'] == '17/1/2022 at 6:00 PM'):
             bookingsSlot1d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 6:30 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot2d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 7:00 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot3d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 7:30 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot4d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 8:30 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot5d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 9:00 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot6d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 9:30 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot7d1 += 1
         if(w[i]['slot'] == '17/1/2022 at 10:00 PM'):
-            bookingsSlot1d1 += 1
+            bookingsSlot8d1 += 1
 
         if(w[i]['slot'] == '18/1/2022 at 6:00 PM'):
             bookingsSlot1d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 6:30 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot2d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 7:00 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot3d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 7:30 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot4d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 8:30 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot5d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 9:00 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot6d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 9:30 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot7d2 += 1
         if(w[i]['slot'] == '18/1/2022 at 10:00 PM'):
-            bookingsSlot1d2 += 1
+            bookingsSlot8d2 += 1
 
     if request.method == 'POST':
         roll = request.POST.get('roll')
@@ -123,7 +123,7 @@ def bookSlot(request):
         else:
             context = {'error': True}
             return render(request, 'index.html', context)
-
+    print(bookingsSlot1d1)
     context = {'success': success,
                'slot1d1': not (bookingsSlot1d1 < 6),
                'slot2d1': not (bookingsSlot2d1 < 6),
