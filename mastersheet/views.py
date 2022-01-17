@@ -30,6 +30,8 @@ def schedule(request):
             completed = []
             notReg = []
             selected = []
+            now = []
+            next = []
 
             for i in range(len(w)):
                 if w[i]['taken'] == '' and w[i]['slot'] != 'FALSE':
@@ -40,8 +42,12 @@ def schedule(request):
                     notReg.append(w[i])
                 if w[i]['selected'] == 'Yes':
                     selected.append(w[i])
+                if w[i]['slot'] == '17/1/2022 at 6:00 PM':
+                    now.append(w[i])
+                if w[i]['slot'] == '17/1/2022 at 6:30 PM':
+                    next.append(w[i])
             context = {'remaining': remaining, 'completed': completed,
-                    'error': False, 'interviewer': username, 'notReg': notReg, 'selected': selected}
+                    'error': False, 'interviewer': username, 'notReg': notReg, 'selected': selected, 'now':now, 'next':next}
             return render(request, 'schedule.html', context)
         else:
             context = {'error': True}
@@ -74,6 +80,8 @@ def schedule(request):
         completed = []
         notReg = []
         selected = []
+        now = []
+        next = []
 
         for i in range(len(w)):
             if w[i]['taken'] == '' and w[i]['slot'] != 'FALSE':
@@ -84,8 +92,12 @@ def schedule(request):
                 notReg.append(w[i])
             if w[i]['selected'] == 'Yes':
                 selected.append(w[i])
+            if w[i]['slot'] == '17/1/2022 at 6:00 PM':
+                    now.append(w[i])
+            if w[i]['slot'] == '17/1/2022 at 7:00 PM':
+                    next.append(w[i])
         context = {'remaining': remaining, 'completed': completed,
-                    'error': False, 'interviewer': interviewer, 'notReg': notReg, 'selected': selected}
+                    'error': False, 'interviewer': interviewer, 'notReg': notReg, 'selected': selected, 'now':now, 'next':next}
         return render(request, 'schedule.html', context)
         
 

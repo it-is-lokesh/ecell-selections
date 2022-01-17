@@ -22,6 +22,66 @@
 
 <h4 class="my-3 mx-3">Hello {{interviewer}}!</h4>
 
+<h2 class="container my-3">Now</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Contact No.</th>
+        	<th scope="col">Slot</th>
+			<th scope="col">Task Link</th>
+        	<th scope="col">Interview Taken</th>
+			<th scope="col">Selected</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in now %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td>{{dataset.phone}}</td>
+        	<td>{{dataset.slot}}</td>
+			<td><a href={{dataset.file}} style="color: white" target="_blank">Click Here</a></td>
+			<td><input type="checkbox" class="form-check-input" id="taken" name='taken' value={{dataset.roll}} form="mastersheet"></td>
+			<td><input type="checkbox" class="form-check-input" id="selected" name='selected' value={{dataset.roll}} form="mastersheet"></td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+<br><br>
+<h2 class="container my-3">Next</h2>
+<table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
+    <thead>
+    	<tr>
+        	<th scope="col">#</th>
+        	<th scope="col">Name</th>
+        	<th scope="col">Roll No.</th>
+			<th scope="col">Contact No.</th>
+        	<th scope="col">Slot</th>
+			<th scope="col">Task Link</th>
+        	<th scope="col">Interview Taken</th>
+			<th scope="col">Selected</th>
+    	</tr>
+	</thead>
+    <tbody>
+	{% for dataset in next %}  
+      	<tr>
+        	<th scope="row">{{forloop.counter}}</th>
+        	<td>{{dataset.name}}</td>
+        	<td>{{dataset.roll}}</td>
+			<td>{{dataset.phone}}</td>
+        	<td>{{dataset.slot}}</td>
+			<td><a href={{dataset.file}} style="color: white" target="_blank">Click Here</a></td>
+			<td><input type="checkbox" class="form-check-input" id="taken" name='taken' value={{dataset.roll}} form="mastersheet"></td>
+			<td><input type="checkbox" class="form-check-input" id="selected" name='selected' value={{dataset.roll}} form="mastersheet"></td>
+      	</tr>
+	{% endfor %}
+    </tbody>
+</table>
+<br><br>
 <h2 class="container my-3">Remaining Interviews</h2>
 <table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
     <thead>
@@ -108,7 +168,7 @@
     </tbody>
 </table>
 <br><br>
-<h2 class="container my-3">Not yet Registered</h2>
+{% comment %} <h2 class="container my-3">Not yet Registered</h2>
 <table class="table my-2" style="margin-left: auto; margin-right: auto; width: 97%">
     <thead>
     	<tr>
@@ -130,5 +190,5 @@
       	</tr>
 	{% endfor %}
     </tbody>
-</table>
+</table> {% endcomment %}
 {% endblock %}
