@@ -36,7 +36,7 @@ def schedule(request):
             for i in range(len(w)):
                 if w[i]['taken'] == '' and w[i]['slot'] != 'FALSE':
                     remaining.append(w[i])
-                if w[i]['taken'] == 'True':
+                if w[i]['taken'] == 'TRUE':
                     completed.append(w[i])
                 if w[i]['slot'] == 'FALSE':
                     notReg.append(w[i])
@@ -86,7 +86,7 @@ def schedule(request):
         for i in range(len(w)):
             if w[i]['taken'] == '' and w[i]['slot'] != 'FALSE':
                 remaining.append(w[i])
-            if w[i]['taken'] == 'True':
+            if w[i]['taken'] == 'TRUE':
                 completed.append(w[i])
             if w[i]['slot'] == 'FALSE':
                 notReg.append(w[i])
